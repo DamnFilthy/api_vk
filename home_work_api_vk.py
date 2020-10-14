@@ -4,13 +4,14 @@ from pprint import pprint
 from urllib.parse import urljoin
 
 # Constans
-TOKEN = 'токен'
+TOKEN = 'THISISTOKEN'
 API_BASE_URL = 'https://api.vk.com/method/'
 HOME_PAGE = 'https://vk.com/id'
 V = '5.21'
 
 # class VK User
 class VKApiClient:
+    USER_HOME_PAGE = HOME_PAGE
     BASE_URL = API_BASE_URL
     def __create_method_url(self, method):
         return urljoin(self.BASE_URL, method)
@@ -36,7 +37,7 @@ class VKApiClient:
         return self.id
     # Return user link page
     def __str__(self):
-        return f'https://vk.com/id{self.id}'
+        return f'{self.USER_HOME_PAGE}{self.id}'
     # Return  mutual friends
     def __and__(self, other):
          return self.get_mutual_friends(other.get_id())
